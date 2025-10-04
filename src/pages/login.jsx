@@ -1,28 +1,52 @@
-import { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+import "./auth.css";
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-  const api = axios.create({ baseURL: import.meta.env.VITE_API_BASE || '' })
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  const handleLogin = async () => {
-    try {
-      const { data } = await api.post('/api/auth/login', { email, senha })
-      alert('Login ok')
-      console.log(data)
-    } catch (e) {
-      alert('Falha no login')
-      console.error(e)
+    // Exemplo mockado (substituir pela sua API)
+    if (email === "teste@teste.com" && senha === "123456") {
+      alert("Login bem-sucedido!");
+      window.location.href = "/dashboard"; // redireciona
+    } else {
+      alert("E-mail ou senha incorretos!");
     }
-  }
+  };
 
   return (
-    <div>
-      <input value={email} onChange={e => setEmail(e.target.value)} placeholder="email" />
-      <input value={senha} onChange={e => setSenha(e.target.value)} placeholder="senha" type="password" />
-      <button onClick={handleLogin}>Entrar</button>
+    <div className="auth-container">
+      <img src="/smarty-logo.png" alt="Logo" className="auth-logo" />
+      <h2 className="auth-title">Entrar</h2>
+
+      <form className="auth-form" onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          required
+        />
+
+        <button type="submit" className="btn-primary">Entrar</button>
+      </form>
+
+      <button
+        className="btn-secondary"
+        onClick={() => (window.location.href = "/register")}
+      >
+        Registrar-se
+      </button>
     </div>
-  )
+  );
 }
