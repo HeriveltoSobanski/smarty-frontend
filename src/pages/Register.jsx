@@ -23,10 +23,9 @@ export default function Register() {
       return;
     }
 
-    // Mock de cadastro (substituir pela API)
     console.log("Usuário cadastrado:", form);
     alert("Cadastro realizado com sucesso!");
-    window.location.href = "/login"; // redireciona pro login
+    window.location.href = "/login";
   };
 
   return (

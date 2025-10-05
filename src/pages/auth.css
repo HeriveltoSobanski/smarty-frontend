@@ -1,10 +1,8 @@
-/* Fundo ocupando tela toda */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -13,16 +11,12 @@ html, body {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom, #ff9800, #ffcc66);
-  padding-top: 40px; /* espaço para a logo */
+  padding-top: 40px;
 }
-
-/* Logo */
 .auth-logo {
-  width: 180px;   /* logo maior */
-  margin-top: -20px; /* puxa um pouco mais para cima */
+  width: 180px;
+  margin-top: -20px;
 }
-
-/* Bloco central */
 .auth-content {
   display: flex;
   flex-direction: column;
@@ -30,18 +24,14 @@ html, body {
   gap: 12px;
   width: 100%;
   max-width: 350px;
-  margin-top: -10px; /* sobe um pouco os inputs e botões */
+  margin-top: -10px;
 }
-
-/* Título */
 .auth-title {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #4e342e;
 }
-
-/* Inputs */
 .auth-content input {
   width: 100%;
   padding: 12px;
@@ -52,12 +42,9 @@ html, body {
   background: #fff;
   outline: none;
 }
-
 .auth-content input::placeholder {
   color: #888;
 }
-
-/* Botão principal (Entrar) */
 .btn-primary {
   background: linear-gradient(to bottom, #ff9800, #f57c00);
   color: #fff;
@@ -66,7 +53,7 @@ html, body {
 .btn-primary,
 .btn-secondary {
   width: 100%;
-  max-width: 350px;   /* mesma largura dos inputs */
+  max-width: 350px;
   padding: 12px;
   margin-top: 10px;
   border-radius: 8px;
@@ -75,26 +62,20 @@ html, body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
-
 .btn-primary:hover {
   background: linear-gradient(180deg, #fb8c00, #ef6c00);
 }
 .btn-primary:active {
   background: linear-gradient(to bottom, #e65100, #bf360c);
 }
-/* Botão secundário (Registrar-se) */
 .btn-secondary {
   background: linear-gradient(to bottom, #ffeb99, #ffcc33);
   border: none;
   color: #333;
 }
-
 .btn-secondary:active {
   background: linear-gradient(to bottom, #fbc02d, #f57f17);
 }
-
-/* Links */
 .auth-links {
   margin-top: 10px;
   display: flex;
@@ -102,13 +83,11 @@ html, body {
   gap: 6px;
   text-align: center;
 }
-
 .auth-links a {
   font-size: 13px;
   color: #4e342e;
   text-decoration: none;
 }
-
 .auth-links a:hover {
   text-decoration: underline;
 }
@@ -121,7 +100,7 @@ button:focus-visible {
 }
 .auth-form input {
   width: 100%;
-  max-width: 350px;   /* controla largura */
+  max-width: 350px;
   padding: 12px;
   margin: 8px 0;
   border-radius: 8px;
@@ -133,6 +112,6 @@ button:focus-visible {
 .auth-form {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* centraliza */
+  align-items: center;
   width: 100%;
 }

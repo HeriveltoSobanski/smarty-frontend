@@ -8,10 +8,9 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Exemplo mockado (substituir pela sua API)
     if (email === "teste@teste.com" && senha === "123456") {
       alert("Login bem-sucedido!");
-      window.location.href = "/dashboard"; // redireciona
+      window.location.href = "/dashboard";
     } else {
       alert("E-mail ou senha incorretos!");
     }
