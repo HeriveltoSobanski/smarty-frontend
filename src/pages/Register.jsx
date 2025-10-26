@@ -1,48 +1,73 @@
 import React, { useState } from "react";
-import "./register.css";
+import "../styles/register.css";
 
 export default function Register() {
-  const [form, setForm] = useState({
-    nome: "",
-    email: "",
-    cpf: "",
-    telefone: "",
-    senha: "",
-    confirmarSenha: ""
-  });
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (form.senha !== form.confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return;
-    }
+    try {
+      const resposta = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, senha }),
+      });
 
-    console.log("Usuário cadastrado:", form);
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = "/login";
+      const data = await resposta.json();
+
+      if (resposta.ok) {
+        alert("Usuário registrado com sucesso!");
+        window.location.href = "/login";
+      } else {
+        alert(data.message || "Erro ao registrar!");
+      }
+    } catch (error) {
+      console.error("Erro ao conectar ao servidor:", error);
+      alert("Erro de conexão com o servidor.");
+    }
   };
 
   return (
-    <div className="register-container">
-      <img src="/smarty-logo.png" alt="Logo" className="register-logo" />
-      <h2 className="auth-title">Registre-se</h2>
+    <div className="auth-container">
+      <img src="/smarty-logo.png" alt="Logo" className="auth-logo" />
+      <h2 className="auth-title">Registrar-se</h2>
 
-      <form className="register-box" onSubmit={handleRegister}>
-        <input type="text" name="nome" placeholder="Nome" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="E-mail" onChange={handleChange} required />
-        <input type="text" name="cpf" placeholder="CPF" onChange={handleChange} required />
-        <input type="text" name="telefone" placeholder="Telefone" onChange={handleChange} required />
-        <input type="password" name="senha" placeholder="Senha" onChange={handleChange} required />
-        <input type="password" name="confirmarSenha" placeholder="Confirmar senha" onChange={handleChange} required />
-
-        <button type="submit" className="register-btn">Cadastrar</button>
+      <form className="auth-form" onSubmit={handleRegister}>
+        <input
+          type="text"
+          placeholder="Nome"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          required
+        />
+        <button type="submit" className="btn-primary">
+          Registrar
+        </button>
       </form>
+
+      <button
+        className="btn-secondary"
+        onClick={() => (window.location.href = "/login")}
+      >
+        Já tenho conta
+      </button>
     </div>
   );
 }

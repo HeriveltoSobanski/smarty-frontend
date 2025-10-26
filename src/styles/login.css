@@ -3,20 +3,32 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 .auth-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom, #ff9800, #ffcc66);
   padding-top: 40px;
 }
+
 .auth-logo {
   width: 180px;
-  margin-top: -20px;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px auto;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
+
+.auth-logo[src] {
+  opacity: 1;
+}
+
 .auth-content {
   display: flex;
   flex-direction: column;
@@ -26,12 +38,14 @@ html, body {
   max-width: 350px;
   margin-top: -10px;
 }
+
 .auth-title {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #4e342e;
 }
+
 .auth-content input {
   width: 100%;
   padding: 12px;
@@ -42,14 +56,17 @@ html, body {
   background: #fff;
   outline: none;
 }
+
 .auth-content input::placeholder {
   color: #888;
 }
+
 .btn-primary {
   background: linear-gradient(to bottom, #ff9800, #f57c00);
   color: #fff;
   border: none;
 }
+
 .btn-primary,
 .btn-secondary {
   width: 100%;
@@ -62,20 +79,25 @@ html, body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 .btn-primary:hover {
   background: linear-gradient(180deg, #fb8c00, #ef6c00);
 }
+
 .btn-primary:active {
   background: linear-gradient(to bottom, #e65100, #bf360c);
 }
+
 .btn-secondary {
   background: linear-gradient(to bottom, #ffeb99, #ffcc33);
   border: none;
   color: #333;
 }
+
 .btn-secondary:active {
   background: linear-gradient(to bottom, #fbc02d, #f57f17);
 }
+
 .auth-links {
   margin-top: 10px;
   display: flex;
@@ -83,14 +105,17 @@ html, body {
   gap: 6px;
   text-align: center;
 }
+
 .auth-links a {
   font-size: 13px;
   color: #4e342e;
   text-decoration: none;
 }
+
 .auth-links a:hover {
   text-decoration: underline;
 }
+
 button:focus,
 button:active,
 button:focus-visible {
@@ -98,6 +123,7 @@ button:focus-visible {
   border: none !important;
   box-shadow: none !important;
 }
+
 .auth-form input {
   width: 100%;
   max-width: 350px;
@@ -109,9 +135,17 @@ button:focus-visible {
   background: #fff;
   color: #333;
 }
+
 .auth-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.erro {
+  color: #b71c1c;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
 }

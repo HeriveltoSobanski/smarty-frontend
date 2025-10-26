@@ -1,0 +1,279 @@
+:root {
+  --bg:#fff9ee;
+  --card:#ffffff;
+  --brand:#ff9900;
+  --brand-strong:#ff8c00;
+  --text:#222;
+  --muted:#7a7a7a;
+  --chip:#f0f2f5;
+  --radius:14px;
+  --shadow:0 8px 18px rgba(0,0,0,.06);
+}
+
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { background:#111; }
+
+.page {
+  max-width:430px;
+  margin:0 auto;
+  min-height:100vh;
+  background:var(--bg);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* --- TOPO --- */
+.topbar {
+  padding:14px 0 8px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.topbar-left {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  width:90%;
+  margin:0 auto;
+}
+
+
+.brand-icon {
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.location {
+  text-align:center;
+}
+
+.location-sub {
+  display:block;
+  font-size:.75rem;
+  color:var(--muted);
+  line-height:1;
+}
+
+.location-city {
+  display:block;
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--text);
+}
+
+/* --- BARRA DE PESQUISA --- */
+.searchbar {
+  width:90%;
+  margin:10px auto 0;
+  border:none;
+  border-radius:12px;
+  padding:12px 14px;
+  text-align:left;
+  background:#f1f3f6;
+  color:#9aa0a6;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+  padding:10px 0 96px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* --- BANNER --- */
+.hero {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:14px auto 0;
+  width:100%;
+}
+
+.hero-card {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg, var(--brand), var(--brand-strong));
+  border-radius:18px;
+  padding:18px;
+  width:90%;
+  min-height:120px;
+  box-shadow:var(--shadow);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:0 auto;
+}
+
+.hero-text p {
+  margin:0 0 6px;
+  color:#fff;
+  opacity:.95;
+  font-weight:600;
+}
+
+.hero-text h1 {
+  margin:0;
+  color:#fff;
+  font-size:1.2rem;
+  line-height:1.15;
+}
+
+.hero-figure {
+  position:absolute;
+  right:10px;
+  bottom:6px;
+  width:110px;
+  height:auto;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* --- CATEGORIAS --- */
+.categories {
+  margin-top:12px;
+  width:90%;
+}
+
+.chips {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+}
+
+.chip {
+  width:100%;
+  border:none;
+  border-radius:16px;
+  background:var(--chip);
+  color:#444;
+  padding:12px 10px;
+  font-size:.9rem;
+  font-weight:600;
+  text-align:center;
+}
+
+.chip-active {
+  background:#ffe2b3;
+  color:#9a5c00;
+  box-shadow:var(--shadow);
+}
+
+/* --- SEÇÃO DE PROMOÇÕES --- */
+.section {
+  margin-top:14px;
+  width:90%;
+}
+
+.section-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+  padding:0 2px;
+}
+
+.section-head h2 {
+  font-size:1rem;
+  margin:0;
+  color:var(--text);
+}
+
+.see-more {
+  border:none;
+  background:transparent;
+  color:var(--brand-strong);
+  font-weight:700;
+}
+
+/* --- CARROSSEL DE PRODUTOS --- */
+.cards {
+  display:grid;
+  grid-auto-flow:column;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:4px;
+}
+
+.cards::-webkit-scrollbar { height:0; }
+
+.card {
+  width:180px;
+  min-width:180px;
+  background:var(--card);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  scroll-snap-align:start;
+  padding:10px;
+}
+
+.thumb-wrap {
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f3f3f3;
+}
+
+.thumb-wrap img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.card h3 {
+  font-size:.95rem;
+  margin:10px 2px 4px;
+  color:var(--text);
+  font-weight:700;
+}
+
+.price {
+  margin:0 2px 4px;
+  color:#06a14a;
+  font-weight:700;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  max-width:430px;
+  margin:0 auto;
+  background:#fff;
+  border-top:1px solid #eee;
+  display:flex;
+  justify-content:space-around;
+  height:60px;
+  z-index:30;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+
+.navbtn {
+  flex:1;
+  background:none;
+  border:none;
+  color:#777;
+  font-weight:600;
+}
+
+.navbtn-active {
+  color:var(--brand-strong);
+}
