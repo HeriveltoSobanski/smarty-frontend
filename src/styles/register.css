@@ -1,65 +1,144 @@
-html, body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --bg-gradient-start: #ff9800;
+  --bg-gradient-end: #ffcc66;
+  --card-bg: #ffffff;
+  --brand: #ff9800;
+  --brand-strong: #ff6f00;
+  --text: #212121;
+  --muted: #757575;
+  --border: #e0e0e0;
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text);
 }
-.register-container {
+
+.auth-container {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(to bottom, #ff9900, #ffcc66);
+  padding: 24px;
+  background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
 }
-.register-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+
+.auth-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 40px 36px;
   width: 100%;
-  max-width: 350px;
+  max-width: 370px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.6s ease;
 }
-.register-box input {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  background: #fff;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+.auth-logo {
+  width: 200px;  margin-bottom: 18px;
+  filter: drop-shadow(0 4px 10px rgba(255, 111, 0, 0.3));
+  transform: scale(1.4);
+  transform-origin: center center;
 }
-.register-box input::placeholder {
-  color: #777;
-}
-.register-box button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #fff;
-  background: linear-gradient(to bottom, #ff9800, #f57c00);
-  transition: background 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.register-box button:hover {
-  background: linear-gradient(to bottom, #f57c00, #e65100);
-}
-.register-box button:active {
-  background: linear-gradient(to bottom, #e65100, #bf360c);
-}
-.register-logo {
-  width: 180px;
-  margin-top: -30px;
-}
+
 .auth-title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #4e342e;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.auth-form {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: #fff;
+  transition: all 0.2s ease;
+  margin-bottom: 14px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--brand-strong);
+  box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.15);
+}
+
+.auth-form input::placeholder {
+  color: var(--muted);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-strong));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255, 111, 0, 0.4);
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  background: #fff7ec;
+  color: var(--brand-strong);
+  border: 1.5px solid #ffe0b2;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: #fff0d5;
+}
+
+.erro {
+  background: rgba(255, 0, 0, 0.1);
+  color: #d32f2f;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

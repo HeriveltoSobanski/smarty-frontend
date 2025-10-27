@@ -5,10 +5,10 @@ export default function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
     try {
       const resposta = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
@@ -19,55 +19,61 @@ export default function Register() {
       const data = await resposta.json();
 
       if (resposta.ok) {
-        alert("Usuário registrado com sucesso!");
         window.location.href = "/login";
       } else {
-        alert(data.message || "Erro ao registrar!");
+        setMensagem(data.message || "Erro ao registrar usuário!");
       }
-    } catch (error) {
-      console.error("Erro ao conectar ao servidor:", error);
-      alert("Erro de conexão com o servidor.");
+    } catch {
+      setMensagem("Erro de conexão com o servidor.");
     }
   };
 
   return (
     <div className="auth-container">
-      <img src="/smarty-logo.png" alt="Logo" className="auth-logo" />
-      <h2 className="auth-title">Registrar-se</h2>
+      <div className="auth-card">
+        <img
+          src="/images/logos/smarty-logo.png"
+          alt="Smarty Entregas"
+          className="auth-logo"
+        />
+        <h2 className="auth-title">Registrar-se</h2>
 
-      <form className="auth-form" onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
-        <button type="submit" className="btn-primary">
-          Registrar
+        {mensagem && <p className="erro">{mensagem}</p>}
+
+        <form className="auth-form" onSubmit={handleRegister}>
+          <input
+            type="text"
+            placeholder="Nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          <button type="submit" className="btn-primary">
+            Registrar
+          </button>
+        </form>
+
+        <button
+          className="btn-secondary"
+          onClick={() => (window.location.href = "/login")}
+        >
+          Já tenho conta
         </button>
-      </form>
-
-      <button
-        className="btn-secondary"
-        onClick={() => (window.location.href = "/login")}
-      >
-        Já tenho conta
-      </button>
+      </div>
     </div>
   );
 }
